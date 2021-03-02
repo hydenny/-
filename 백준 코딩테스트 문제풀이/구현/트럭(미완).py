@@ -31,6 +31,5 @@ else:
         total_weight += truck[i]
         count += 1
         time += 1
-        #print(truck_list)
     time += w
     print(time)
