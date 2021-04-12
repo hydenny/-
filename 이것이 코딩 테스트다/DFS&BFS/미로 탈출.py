@@ -1,12 +1,13 @@
 from collections import deque
+import sys
 
-n,m = map(int,input().split())
+n,m = map(int,sys.stdin.readline().rstrip().split())
 board =[]
 dx = [0,1,0,-1]
 dy = [-1,0,+1,0]
 
 for i in range(n):
-    board.append(list(map(int,input())))
+    board.append(list(map(int,sys.stdin.readline().rstrip())))
 visited = board
 def bfs(y,x):
     cnt = 1
