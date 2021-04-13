@@ -9,16 +9,16 @@ for _ in range(m):
     a, b = map(int, sys.stdin.readline().rstrip().split())
     graph[a].append(b)
 
-    dist = [-1] * (n + 1)
-    dist[x] = 0
+dist = [-1] * (n + 1)
+dist[x] = 0
 
-    q = deque([x])
-    while q:
-        now = q.popleft()
-        for next in graph[now]:
-            if dist[next] == -1:
-                dist[next] = dist[now] + 1
-                q.append(next)
+q = deque([x])
+while q:
+    now = q.popleft()
+    for next in graph[now]:
+        if dist[next] == -1:
+            dist[next] = dist[now] + 1
+            q.append(next)
 
 check = False
 
