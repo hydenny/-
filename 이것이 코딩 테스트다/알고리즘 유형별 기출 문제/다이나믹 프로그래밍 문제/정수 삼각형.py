@@ -10,7 +10,7 @@ for i in range(n):
         num = array[0]
         index = 0
     else:
-        num = max(array[index:index + 2])
+        num = max(array[index], array[index + 1]])
         index = array.index(num)
     sum += num
 
