@@ -1,14 +1,17 @@
 import sys
+MAX = 123456
+array = [True] * (MAX * 2 + 1)
+
+for i in range(2, int((2 * MAX) ** 0.5) + 1):
+    if array[i] == True:
+        for j in range(2 * i, 2 * MAX + 1, i):
+            array[j] = False
 
 while True:
-    n = int(sys.stdin.readline())
-    array = [True for i in range(n + 1, 2 * n + 1)]
+    n = int(sys.stdin.readline().rstrip())
 
-    for i in range(2, int((2 * n) ** 0.5) + 1):
-        if array[i] == True:
-            j = 2
-            while i * j <= n:
-                array[i * j] = False
-                j += 1
-
-    print(array.count(True))
+    if n == 0:
+       break
+    
+    result_array = array[n + 1: 2 * n + 1]
+    print(result_array.count(True))
