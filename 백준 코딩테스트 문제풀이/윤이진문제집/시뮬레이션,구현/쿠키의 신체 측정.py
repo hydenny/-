@@ -1,56 +1,87 @@
 import sys
-dx = [-1, 1, 0, 0]
-dy = [0, 0, 1]
+#from pprint import pprint
 
 def heart(n):
-    for i in range(n):
-        for j in range(n):
+    for j in range(n):
+        for i in range(n):
             if array[j][i] == '*':
-                heart = array[j][i + dy[2]]
-                return [j][i + dy[2]]
+                x = i
+                y = j + 1
+                return x, y
 
 def left_arm(n):
-    length = 1
-    arm = array(heart(n)) + [dx[0]][dy[0]]
-    while True:       
-        if arm == '*':
-            arm += [dx[0]][dy[0]]
+    length = 0
+    (x, y) = heart(n)
+    x -= 1
+    while True:      
+        if array[y][x] == '*':
+            x -= 1
             length += 1
+            if x == -1:
+                return length
         else:
-            break
-    return length
+            return length
 
-def right_arm(heart):
-    length = 1
-    arm = heart(n) + (0, 1)
+def right_arm(n):
+    length = 0
+    (x, y) = heart(n)
+    x += 1
     while True:       
-        if arm == '*':
-            arm += (0, 1)
+        if array[y][x] == '*':
+            x += 1
             length += 1
+            if x == n:
+                return length
         else:
-            break
-    return length
+            return length
 
 def waist(n):
-    length = 1
-    waist = heart(n) + (1, 0)
+    length = 0
+    (x, y) = heart(n)
+    y += 1
     while True:       
-        if waist == '*':
-            waist += (1, 0)
+        if array[y][x] == '*':
+            y += 1
             length += 1
         else:
-            break
-    return length
+            return length
 
 def left_leg(n):
-    return
+    length = 0
+    (x, y) = heart(n)
+    x -= 1
+    y += waist(n) + 1
+    while True:       
+        if array[y][x] == '*':
+            y += 1
+            length += 1
+            if y == n:
+                return length
+        else:
+            return length
+
 def right_leg(n):
-    return
+    length = 0
+    (x, y) = heart(n)
+    x += 1
+    y += waist(n) + 1
+    while True:       
+        if array[y][x] == '*':
+            y += 1
+            length += 1
+            if y == n:
+                return length
+        else:
+            return length
 
 n = int(sys.stdin.readline())
 
 global array
-array = [list(map(str, sys.stdin.readline())) for i in range(n)]
+array = [list(map(str, sys.stdin.readline().rstrip())) for i in range(n)]
 
-print(heart(n), left_arm(n))
-#print(str(heart(n)), str(left_arm(n)), str(right_arm(n)), str(waist(n)), end=" ")
+(x, y) = heart(n)
+#pprint(array)
+#print(array)
+print(str(y + 1), str(x + 1), end=" ")
+print(end='\n')
+print(left_arm(n), right_arm(n), waist(n), left_leg(n), right_leg(n))
