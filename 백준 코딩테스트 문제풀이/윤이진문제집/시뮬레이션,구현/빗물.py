@@ -4,12 +4,19 @@ h, w = map(int, sys.stdin.readline().split())
 
 array = list(map(int, sys.stdin.readline().split()))
 
-height = array[0]
+height = min(array[0], max(array[1:]))
 
 result = 0
 
-for i in range(1, w + 1):
-    if array[i] < height:
-        result += (height - array[i])
-    else:
+for i in range(w - 1):
+    gap = height - array[i]
+
+    if gap > 0:
         
+        result += gap
+    else:
+        if i == w - 1:
+            break
+        height = min(array[i], max(array[i + 1:]))
+
+print(result)
