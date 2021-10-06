@@ -6,39 +6,19 @@ n = int(input())
 
 array = [['*'] * n for i in range(n)]
 
-def pattern(n):
-    for i in range(n // 3):
-        for j in range(n // 3):
-            pattern(n // 3)
-    for i in range(n // 3):
-        for j in range(n // 3,2 * n // 3):
-            pattern(n // 3)
-    for i in range(n // 3):
-        for j in range(2 * n // 3, n):
-            pattern(n // 3)
-
-    for i in range(n // 3, 2 * n // 3):
-        for j in range(n // 3):
-            pattern(n // 3)
-    for i in range(n // 3, 2 * n // 3):
-        for j in range(n // 3, 2 * n // 3):
-            array[i][j] = ' '
-    for i in range(n // 3, 2 * n // 3):
-        for j in range(2 * n // 3, n):
-            pattern(n // 3)
-
-    for i in range(2 * n // 3, n):
-        for j in range(n // 3):
-            pattern(n // 3)
-    for i in range(2 * n // 3, n):
-        for j in range(n // 3,2 * n // 3):
-            pattern(n // 3)
-    for i in range(2 * n // 3, n):
-        for j in range(2 * n // 3, n):
-            pattern(n // 3)
-
+def hole(n):
+    for i in range(n):
+        for j in range(n):
+            if n // 3 <= i < 2 * n // 3 and n // 3 <= j < 2 * n // 3:
+                array[i][j] = ' '
+            else:
+                part = hole(n // 3)
+                
+                
     return array
-pattern(n)
+
+hole(n)
+    
 
 for i in range(n):
     strArray = "".join(array[i])
