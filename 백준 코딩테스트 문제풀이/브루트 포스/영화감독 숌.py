@@ -1,22 +1,16 @@
 n = int(input())
 
-result = "666"
+count = 0
+number = "666"
 
-if n != 1:
-    head = "0"
-    tail = "0"
-
-    count = 0
-
-    while count != n:
-        if int(head + result) < int(result + tail):
-            result = head + result
-            head = str(int(head) + 1)
-            count += 1
-
+while True:
+    if "666" not in number:
+        number = str(int(number) + 1)
+    else:
+        count += 1
+        if count == n:
+            break
         else:
-            result = result + tail
-            tail = str(int(tail) + 1)
-            count += 1
+            number = str(int(number) + 1)
 
-print(result)
+print(number)
