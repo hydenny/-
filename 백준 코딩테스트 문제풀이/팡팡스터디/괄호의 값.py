@@ -8,10 +8,12 @@ def recur(string):
 
     if string[start] == '(':
         if string[start + 1] == ')':
-            return 2 + recur(string[start + 2:])
+            start += 2
+            return 2 + recur(string[start:])
         
         elif string[start + 1] == '(' or '[':
-            return 2 * recur(string[start + 1])
+            start += 1
+            return 2 * recur(string[start:])
 
         else:
             print(0)
@@ -19,10 +21,12 @@ def recur(string):
 
     if string[start] == '[':
         if string[start + 1] == ']':
-            return 3 + recur(string[start + 2:])
+            start += 2
+            return 3 + recur(string[start:])
         
         elif string[start + 1] == '(' or '[':
-            return 3 * recur(string[start + 2:])
+            start += 1
+            return 3 * recur(string[start:])
 
         else:
             print(0)
