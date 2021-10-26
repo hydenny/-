@@ -1,36 +1,37 @@
-global start, result
+global idx, result
 start, result = 0, 0
 
-def recur(string):
-    global start, result
+def recur(idx):
+    global result, start
 
-    value = 0
+    if string[idx] == '(':
+        if string[idx + 1] == ')':
+            idx += 2
+            result += (2 + recur(idx))
 
-    if string[start] == '(':
-        if string[start + 1] == ')':
-            start += 2
-            result = 2 + recur(string[start:])
-        
-        elif string[start + 1] == '(' or '[':
-            start += 1
-            return 2 * recur(string[start:])
+        elif string[idx + 1] == '(' or '[':
+            idx += 1
+            result += 2 * recur(idx)
 
         else:
             print(0)
             exit()
 
-    if string[start] == '[':
-        if string[start + 1] == ']':
-            start += 2
-            return 3 + recur(string[start:])
-        
-        elif string[start + 1] == '(' or '[':
-            start += 1
-            return 3 * recur(string[start:])
+    elif string[idx] == '[':
+        if string[idx + 1] == ']':
+            idx += 2
+            result += (3 + recur(idx))
+
+        elif string[idx + 1] == '(' or '[':
+            idx += 1
+            result += 3 * recur(idx)
 
         else:
             print(0)
             exit()
+
+    return result
+
 
 string = str(input())
 
@@ -39,4 +40,8 @@ if string[start] == (')' or ']'):
     exit()
 
 else:
-    print(recur(string))
+    answer = 0
+
+    
+
+    print(recur(start))
