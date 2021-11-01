@@ -15,10 +15,8 @@ length = Max
 result = 0
 
 while length > 1:
-    number = Max - length + 1
-
-    for i in range(n - Max + 1):
-        for j in range(m - Max + 1):
+    for i in range(n - length + 1):
+        for j in range(m - length + 1):
             if array[i][j] == array[i][j + length - 1] == array[i + length - 1][j] == array[i + length - 1][j + length - 1]:
                 result = length * length
                 print(result)
