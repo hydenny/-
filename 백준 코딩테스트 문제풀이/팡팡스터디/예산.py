@@ -10,12 +10,18 @@ budget = int(input().rstrip())
 
 if sum(regions) <= budget:
     print(max(regions))
+    exit()
 
-if budget % n == 0:
-    pivot = budget // n
-else:
-    pivot = budget // n + 1
-    
+pivot = budget // n
+
+remainder = []
+
 for i in regions:
     if i <= pivot:
-        
+        budget -= i
+    else:
+        remainder.append(i)
+if remainder:
+    print(budget // len(remainder))
+else:
+    print(pivot)
