@@ -12,16 +12,18 @@ if sum(regions) <= budget:
     print(max(regions))
     exit()
 
-pivot = budget // n
+start, end = 0, max(regions)
+total = 0
 
-remainder = []
-
-for i in regions:
-    if i <= pivot:
-        budget -= i
+while start <= end:
+    result = (start + end) // 2
+    
+    for i in regions:
+        total += min(result, i)
+        
+    if total > budget:
+        end = result - 1
     else:
-        remainder.append(i)
-if remainder:
-    print(budget // len(remainder))
-else:
-    print(pivot)
+        start = result + 1
+
+print(result)
