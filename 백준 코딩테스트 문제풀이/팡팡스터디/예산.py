@@ -2,22 +2,23 @@ import sys
 
 input = sys.stdin.readline
 
-n = int(input().rstrip())
+n = int(input())
 
 regions = list(map(int, input().split()))
 
-budget = int(input().rstrip())
+budget = int(input())
 
 if sum(regions) <= budget:
     print(max(regions))
     exit()
 
 start, end = 0, max(regions)
-total = 0
 
 while start <= end:
     result = (start + end) // 2
     
+    total = 0
+
     for i in regions:
         total += min(result, i)
         
@@ -26,4 +27,4 @@ while start <= end:
     else:
         start = result + 1
 
-print(result)
+print(end)
