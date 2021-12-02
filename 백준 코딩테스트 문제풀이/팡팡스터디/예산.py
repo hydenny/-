@@ -25,8 +25,7 @@ while start <= end:
     if total > budget:
         end = result - 1
     else:
+        answer = result
         start = result + 1
-
-answer = end
 
 print(answer)
