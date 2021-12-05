@@ -31,4 +31,4 @@ for _ in range(N):
     for e in set(sys.stdin.readline().rstrip()[4:-4])-set(reserved):
         tmp |= (1 << alpha_to_bit[e])
     words.append(tmp)
-print(solution(K-5))
+print(solution(K-5))  
