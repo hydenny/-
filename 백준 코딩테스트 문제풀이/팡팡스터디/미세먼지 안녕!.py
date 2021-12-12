@@ -31,9 +31,10 @@ def diffusion(room, top, bottom):
                 direction['down'] = False
                 Arc += around
             
-            copy_room[y][x] = Arc
-                
+            copy_room[y][x] += Arc
+            #print(direction)
             for direct in direction.keys():
+                #print(direct, direction[direct])
                 if direction[direct]:
                     if direct == 'left':
                         copy_room[y][x - 1] += around
@@ -118,11 +119,17 @@ def get_aircleaner_pos(r):
 
 def solution(r, c, t):
     top, bottom = get_aircleaner_pos(r)
-    print(top, bottom)
-    diffusion(room ,top, bottom)
-    #clean_room(top, bottom)
+    #print(top, bottom)
+    for time in range(t):
+        diffusion(room ,top, bottom)
+        clean_room(top, bottom)
+    
+    result = 0
+    
     for i in range(r):
-        print(room[i])
+        result += sum(room[i])
+    
+    return result + 2
 
 
 r, c, t = map(int, input().split())
