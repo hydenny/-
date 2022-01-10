@@ -8,15 +8,16 @@ def part():
     for y in range(y1, y2):
         for x in range(x1, x2):
             square[y][x] = True
-    
     return  square
 
 
 def solution():
     gap = abs(2 * f - w)
     pivot = part()
-    result = pivot.count(False) * (c + 1)    
-
+    square_false = 0
+    for y in range(y2):
+        square_false += pivot[y].count(False)
+    result = square_false * (c + 1)    
     if max(f, w - f) == w - f:
         remain = [[False] * (y2 - y1) for _ in range(x2 - x1 - gap)]
         for y in range(y2 - y1):
