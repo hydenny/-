@@ -17,18 +17,23 @@ def solution():
     square_false = 0
     for y in range(y2):
         square_false += pivot[y].count(False)
-    result = square_false * (c + 1)    
+    result = square_false * (c + 1)  
+      
     if max(f, w - f) == w - f:
-        remain = [[False] * (y2 - y1) for _ in range(x2 - x1 - gap)]
-        for y in range(y2 - y1):
-            for x in range(x2 - x1 - gap):
+        remain = [[False] * y2 for _ in range(w - f - gap)]
+        square_false2 = 0
+        for y in range(y2):
+            for x in range(x2 - gap):
                 remain[y][x] = pivot[y][x]
-        result += remain.count(False) * (c + 1)        
+        for y in range(y2):
+            square_false2 += remain[y].count(False)
+        result += square_false2 * (c + 1)        
     else:
         result *= 2
         result += (gap * h)
     
     print(result)
+
 
 
 w, h, f, c, x1, y1, x2, y2 = map(int, input().split())
