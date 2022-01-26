@@ -20,7 +20,7 @@ def solution():
     result = square_false * (c + 1)  
       
     if max(f, w - f) == w - f:
-        remain = [[False] * y2 for _ in range(w - f - gap)]
+        remain = [[False] * (w - f - gap) for _ in range(y2)]
         square_false2 = 0
         for y in range(y2):
             for x in range(x2 - gap):
