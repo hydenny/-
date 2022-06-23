@@ -11,6 +11,7 @@ def backtrack(depth, visited, answer, m, n, numbers):
         visited[x] = True
         answer.append(numbers[x])
         backtrack(depth+1, visited, answer, m, n, numbers)
+        print("answer: ", answer)
         visited[x] = False
         answer.pop()
     return
